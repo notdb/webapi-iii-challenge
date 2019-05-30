@@ -64,7 +64,17 @@ router.get("/:id/posts", async (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", validateUserId, async (req, res) => {
+  try {
+    const user = await dbUser.remove(req.params.id);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "error retrieving the users"
+    });
+  }
+});
 
 router.put("/:id", (req, res) => {});
 
