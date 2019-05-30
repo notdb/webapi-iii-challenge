@@ -8,7 +8,7 @@ server.use(express.json());
 server.use("/users", userRouter);
 
 server.get("/", logger, (req, res) => {
-  res.status(200).json({ messageOfTheDay: process.env.MOTD });
+  res.status(200).json({ messageOfTheDay: "test" });
 });
 
 //custom middleware
