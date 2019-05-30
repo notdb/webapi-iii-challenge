@@ -7,7 +7,7 @@ const server = express();
 server.use(express.json());
 server.use("/users", userRouter);
 
-server.get("/", (req, res) => {
+server.get("/", logger, (req, res) => {
   res.status(200).json({ messageOfTheDay: "test" });
 });
 
